@@ -1,0 +1,75 @@
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.phone-frame {
+  background: white;
+  width: 320px;
+  min-height: 600px;
+  padding: 16px;
+  border-radius: 30px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.header {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.filter-scroll {
+  display: flex;
+  overflow-x: auto;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  gap: 8px;
+  scrollbar-width: none;
+}
+
+.filter-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-scroll button {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  gap: 10px;
+}
+
+button.yes {
+  background-color: #4caf50;
+  color: white;
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+button.no {
+  background-color: #f44336;
+  color: white;
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+}
