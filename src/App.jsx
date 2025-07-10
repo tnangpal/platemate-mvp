@@ -12,8 +12,15 @@ export default function App() {
   const [userTurn, setUserTurn] = useState("A");
   const [match, setMatch] = useState(null);
 
+  const filterOptions = [
+    "Dietary Restrictions",
+    "Distance",
+    "Dine In/Take Out",
+    "Price",
+  ];
+
   const currentRestaurant = restaurants[index];
-  const currentUser = userTurn === "A" ? users[0] : users[1];
+  const currentUser = users[userTurn === "A" ? 0 : 1];
 
   const handleChoice = (liked) => {
     if (!currentRestaurant) return;
@@ -25,57 +32,56 @@ export default function App() {
       if (liked) setUserBChoices([...userBChoices, currentRestaurant.id]);
       if (liked && userAChoices.includes(currentRestaurant.id)) {
         setMatch(currentRestaurant);
-        return;
       }
       setUserTurn("A");
-      setIndex(index + 1);
+      setIndex((prev) => prev + 1);
     }
   };
 
   if (match) {
     return (
-      <div className="app">
-        <div className="phone-frame">
-          <div className="header">🎉 You matched on:</div>
-          <RestaurantCard restaurant={match} />
-        </div>
+      <div className="phone-frame">
+        <img src="/PM_Logo.png" alt="PlateMate Logo" className="header-logo" />
+        <h3 className="subtitle">It’s a match! You both like:</h3>
+        <RestaurantCard restaurant={match} />
       </div>
     );
   }
 
   return (
-    <div className="app">
-      <div className="phone-frame">
-        <div className="filter-scroll">
-          <button>🍕</button>
-          <button>🍣</button>
-          <button>🥗</button>
-          <button>🌮</button>
-          <button>🍔</button>
-          <button>🥘</button>
-        </div>
+    <div className="phone-frame">
+      <img src="/PM_Logo.png" alt="PlateMate Logo" className="header-logo" />
 
-        <div className="header">
-          Where do you want to eat, <strong>{currentUser}</strong>?
-        </div>
-
-        {currentRestaurant ? (
-          <>
-            <RestaurantCard restaurant={currentRestaurant} />
-
-            <div className="buttons">
-              <button className="yes" onClick={() => handleChoice(true)}>
-                👍 Yes
-              </button>
-              <button className="no" onClick={() => handleChoice(false)}>
-                👎 No
-              </button>
-            </div>
-          </>
-        ) : (
-          <div className="header">No more restaurants.</div>
-        )}
+      <div className="filter-scroll">
+        {filterOptions.map((filter, idx) => (
+          <button className="filter-pill" key={idx}>
+            {filter}
+          </button>
+        ))}
       </div>
+
+      <h3 className="subtitle">
+        Where do you want to eat, <strong>{currentUser}</strong>?
+      </h3>
+
+      {currentRestaurant ? (
+        <>
+          <RestaurantCard restaurant={currentRestaurant} />
+
+          <div className="choice-buttons">
+            <button className="yes" onClick={() => handleChoice(true)}>
+              👍 Yes
+            </button>
+            <button className="no" onClick={() => handleChoice(false)}>
+              👎 No
+            </button>
+          </div>
+        </>
+      ) : (
+        <div style={{ textAlign: "center", marginTop: "2rem" }}>
+          <p>No more restaurants left!</p>
+        </div>
+      )}
     </div>
   );
 }
