@@ -71,6 +71,10 @@ export default function App() {
   if (match) {
     return (
       <div className="phone-frame">
+        <div className="notch">
+        <img src="/Right_Status_Bar.png" alt="Status Icons" className="status-icons" />
+        <div className="iphone-time">2:17</div>
+        </div>
         <img src="/PM_Logo.png" alt="PlateMate Logo" className="header-logo" />
         <h3 className="subtitle">🎉 It’s a match! You both like:</h3>
         <RestaurantCard restaurant={match} />
@@ -80,6 +84,10 @@ export default function App() {
 
   return (
     <div className="phone-frame">
+      <div className="notch">
+      <img src="/Right_Status_Bar.png" alt="Status Icons" className="status-icons" />
+      <div className="iphone-time">2:17</div>
+      </div>
       <img src="/PM_Logo.png" alt="PlateMate Logo" className="header-logo" />
 
       <div className="filter-scroll">
