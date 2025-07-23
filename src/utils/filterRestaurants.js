@@ -24,9 +24,9 @@ export function filterRestaurants(restaurants, filters) {
       selectedDistances.some((range) => {
         if (isNaN(distanceNum)) return false;
         if (range === "0-5 miles") return distanceNum >= 0 && distanceNum <= 5;
-        if (range === "5-10 miles") return distanceNum > 5 && distanceNum <= 10;
-        if (range === "10-20 miles") return distanceNum > 10 && distanceNum <= 20;
-        if (range === "20+ miles") return distanceNum > 20;
+        if (range === "5-10 miles") return distanceNum <= 10;
+        if (range === "10-20 miles") return distanceNum <= 20;
+        if (range === "20+ miles") return distanceNum >= 20;
         return false;
       });
 

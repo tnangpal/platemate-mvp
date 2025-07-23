@@ -10,7 +10,7 @@ import { filterRestaurants } from "./utils/filterRestaurants";
 
 import "./styles/App.css";
 
-const users = ["Abby", "David"];
+const users = ["Abby", "Sam"];
 
 export default function App() {
   const [index, setIndex] = useState(0);
